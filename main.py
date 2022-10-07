@@ -51,11 +51,13 @@ if uploaded_file is not None:
     elif option =="Route Optimization":
         df_route=route_optimization(df)
         st.header("Route Optimized Order Details")
+        df_route.drop(["zone","dept_priority"],axis=1,inplace=True)
         st.dataframe(df_route)
         give_download_option(df_route)
         
     elif option=="Priority Optimization":
         df=optimization.priority_optimization(df)
+        df.drop(["zone","dept_priority"],axis=1,inplace=True)
         st.header("Priority Optimized Order Details")
         st.dataframe(df)
         give_download_option(df)
@@ -68,6 +70,7 @@ if uploaded_file is not None:
             df_route=route_optimization(data[0])
             df_priority=optimization.priority_optimization(data[1])
             df_optimized=pd.concat([df_route,df_priority],axis=0).drop_duplicates(ignore_index=True)
+            df_optimized.drop(["zone","dept_priority"],axis=1,inplace=True)
             st.header("Route plus Priority optimized Order Details")
             st.dataframe(df_optimized)
             give_download_option(df_optimized)
