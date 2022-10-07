@@ -42,7 +42,7 @@ if uploaded_file is not None:
         df=pd.read_excel(uploaded_file)
         
     st.header("Order Details")
-    st.dataframe(df)
+    st.table(df)
     df=data_preparation.create_data(df)
     
     if option == "None":
@@ -53,14 +53,14 @@ if uploaded_file is not None:
         print(df_route)
         st.header("Route Optimized Order Details")
         df_route.drop(["zone","dept_priority"],axis=1,inplace=True)
-        st.dataframe(df_route)
+        st.table(df_route)
         give_download_option(df_route)
         
     elif option=="Priority Optimization":
         df=optimization.priority_optimization(df)
         df.drop(["zone","dept_priority"],axis=1,inplace=True)
         st.header("Priority Optimized Order Details")
-        st.dataframe(df)
+        st.table(df)
         give_download_option(df)
     
     elif option=="Route Plus Priority Optimization":
@@ -73,7 +73,7 @@ if uploaded_file is not None:
             df_optimized=pd.concat([df_route,df_priority],axis=0).drop_duplicates(ignore_index=True)
             df_optimized.drop(["zone","dept_priority"],axis=1,inplace=True)
             st.header("Route plus Priority optimized Order Details")
-            st.dataframe(df_optimized)
+            st.table(df_optimized)
             give_download_option(df_optimized)
     else:
         pass
