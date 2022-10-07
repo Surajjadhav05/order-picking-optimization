@@ -74,7 +74,7 @@ if uploaded_file is not None:
     else:
         pass
 else:
-    st.header("Please Upload A Order Details and Select Optimization method")
+    st.sidebar.write("Please Upload A Order Details and Select Optimization method")
         
         
 
