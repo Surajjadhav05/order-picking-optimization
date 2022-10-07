@@ -50,6 +50,7 @@ if uploaded_file is not None:
     
     elif option =="Route Optimization":
         df_route=route_optimization(df)
+        print(df_route)
         st.header("Route Optimized Order Details")
         df_route.drop(["zone","dept_priority"],axis=1,inplace=True)
         st.dataframe(df_route)
