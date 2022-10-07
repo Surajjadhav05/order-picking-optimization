@@ -32,7 +32,7 @@ def route_optimization(df):
     df_route=pd.DataFrame()
     for i in routeoptimized_zones:
         d=df.loc[df.zone==i]
-        df_route=pd.concat([df_route,d]).drop_duplicates(ignore_index=True)
+        df_route=pd.concat([d,df_route]).drop_duplicates(ignore_index=True)
     return df_route
       
 if uploaded_file is not None:
