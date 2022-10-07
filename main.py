@@ -67,7 +67,7 @@ if uploaded_file is not None:
         if len(df.loc[df.dept_priority<7])<2:
             st.write("Route Plus Priority Optimization is not possible as low priority products are less in number")
         else:
-            data=prepare_data.prepare_data_route_plus_priority(df)
+            data=data_preparation.prepare_data_route_plus_priority(df)
             df_route=route_optimization(data[0])
             df_priority=optimization.priority_optimization(data[1])
             df_optimized=pd.concat([df_route,df_priority],axis=0).drop_duplicates(ignore_index=True)
