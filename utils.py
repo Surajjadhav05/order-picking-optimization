@@ -54,9 +54,9 @@ class prepare_data:
             for j in unique_zones:
                 row.append(travel_times[i-1][j-1])
             travel_time_subset.append(row)
-        print(travel_time_subset)
     
         return unique_zones, travel_time_subset
+    
     def prepare_data_route_plus_priority(self,df):
         df_route=df.loc[df.dept_priority<7]
         df_priority=df.loc[df.dept_priority>6]
@@ -72,10 +72,10 @@ class perform_optimization:
     def perform_tsp_routing(self,travel_time_subset):
         def create_data_model():
             data = {}
-            data['distance_matrix'] =travel_time_subset
+            data['distance_matrix'] =self.travel_time_subset
             data['num_vehicles'] = 1
             data['start'] = [0]
-            data['end']=[len(travel_time_subset)-1]
+            data['end']=[len(self.travel_time_subset)-1]
             return data
         
         data=create_data_model()
