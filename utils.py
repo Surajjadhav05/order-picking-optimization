@@ -59,7 +59,7 @@ class prepare_data:
         return unique_zones, travel_time_subset
     def prepare_data_route_plus_priority(self,df):
         df_route=df.loc[df.dept_priority<7]
-        df_priority=df.loc[df.dept_priority>7]
+        df_priority=df.loc[df.dept_priority>6]
         return df_route, df_priority
     
         
